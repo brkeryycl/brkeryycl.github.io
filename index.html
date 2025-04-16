@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Berk Eray Yücel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      line-height: 1.6;
+    }
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    header p {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: #cfcfcf;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #111;
+      padding: 15px 40px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    section {
+      padding: 80px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-left: 4px solid #8e2de2;
+      padding-left: 12px;
+      color: #f1f1f1;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .project-links a, .contact a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #8e2de2;
+      text-decoration: none;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background-color: #1c1c1e;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>Berk Eray Yücel</strong></div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="#cv">CV</a>
+      <a href="#fun">Fun</a>
+    </div>
+  </nav>
+  <header>
+    <h1>Berk Eray Yücel</h1>
+    <p>Full-Stack Software Developer</p>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      A passionate Full-Stack Developer with 2 years of experience, skilled in designing,
+      building, and maintaining responsive web applications. Proficient in Angular, C#,
+      and MSSQL, with a focus on creating scalable and maintainable solutions. Eager to
+      continue learning and contribute to innovative development projects.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Frontend</h3>
+        <ul>
+          <li>Angular, JavaScript, TypeScript</li>
+          <li>HTML5, CSS3, SCSS</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Backend & Tools</h3>
+        <ul>
+          <li>C#, .NET, ASP.NET Core</li>
+          <li>RESTful API, Git, Azure DevOps</li>
+          <li>Postman, Swagger</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Database</h3>
+        <ul>
+          <li>MSSQL, T-SQL</li>
+          <li>Stored Procedures, Indexing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>UI Libraries</h3>
+        <ul>
+          <li>DevExpress, DevExtreme, Syncfusion</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <h3>Fol Yazılım A.Ş (2023 - 2025) - Junior Software Developer</h3>
+    <p><strong>ERP Project – River Yazılım:</strong> Developed a no-code ERP system enabling users to design workflows and forms visually.</p>
+    <ul>
+      <li>Built dynamic and responsive UI components using Angular.</li>
+      <li>Developed scalable RESTful APIs with C# and ASP.NET Core.</li>
+      <li>Optimized MSSQL queries, implemented stored procedures.</li>
+      <li>Created drag-and-drop workflow builders and automation tools.</li>
+      <li>Improved UX with validation, filtering, and performance enhancements.</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Freelance Projects</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Gasflow</h3>
+        <p>3D interactive presentation of natural gas regulator with Three.js</p>
+        <a href="https://gasflow.co" target="_blank">Visit Site</a>
+      </div>
+      
+      <div class="card">
+        <h3>Akdora Engineering</h3>
+        <p>Corporate engineering services site with UI/UX focus</p>
+        <a href="https://akdoramuhendislik.com" target="_blank">Visit Site</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cv">
+    <h2>Download My CV</h2>
+    <p>
+      <a href="BerkErayYucelCV.pdf" download style="color:#8e2de2; font-weight:600;">📄 Click here to download my CV (PDF)</a>
+    </p>
+  </section>
+
+  <section id="fun">
+    <h2>More About Me</h2>
+    <ul>
+      <li>🏊‍♂️ Love swimming and exploring underwater with diving</li>
+      <li>🥋 Enthusiastic about martial arts and combat sports training</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:brkeryycl@gmail.com">brkeryycl@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/berkerayyucel/" target="_blank">berkerayyucel</a></p>
+    <p>Phone: +90 532 324 33 49</p>
+    <p>Languages: Turkish (Native), English (Fluent)</p>
+  </section>
+</body>
+</html>
