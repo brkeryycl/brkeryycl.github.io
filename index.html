@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Berk Eray Yücel</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -62,6 +63,13 @@
       padding: 80px 40px;
       max-width: 1000px;
       margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     h2 {
       font-size: 2rem;
@@ -91,6 +99,23 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
 </head>
 <body>
   <nav>
@@ -194,6 +219,7 @@
   <section id="fun">
     <h2>More About Me</h2>
     <ul>
+      <li>♟️ Enjoy playing chess and participating in tournaments</li>
       <li>🏊‍♂️ Love swimming and exploring underwater with diving</li>
       <li>🥋 Enthusiastic about martial arts and combat sports training</li>
     </ul>
