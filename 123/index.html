@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özel Soru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .question {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .btn {
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-evet {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .btn-hayir {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        .celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .celebration.active {
+            display: flex;
+        }
+
+        .celebration-content {
+            text-align: center;
+            color: white;
+            animation: zoomIn 0.5s ease;
+        }
+
+        .celebration-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+
+        .celebration-content p {
+            font-size: 2rem;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confetti-fall 3s linear;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .question {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+
+            .btn {
+                padding: 15px 35px;
+                font-size: 1.2rem;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .celebration-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .celebration-content p {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="question">Feyza Bana Aşık Mısın? ❤️</h1>
+        <div class="buttons-container">
+            <button class="btn btn-evet" onclick="celebrate()">Evet</button>
+            <button class="btn btn-hayir" id="hayirBtn">Hayır</button>
+        </div>
+    </div>
+
+    <div class="celebration" id="celebration">
+        <div class="celebration-content">
+            <h1>🎉  🎉</h1>
+            <p>Ben de öyle düşünmüştüm❤️✨</p>
+        </div>
+    </div>
+
+    <script>
+        const hayirBtn = document.getElementById('hayirBtn');
+        const container = document.querySelector('.buttons-container');
+        let isMobile = window.innerWidth <= 768;
+
+        function getRandomPosition() {
+            const containerRect = container.getBoundingClientRect();
+            const btnWidth = hayirBtn.offsetWidth;
+            const btnHeight = hayirBtn.offsetHeight;
+            
+            const maxX = window.innerWidth - btnWidth - 40;
+            const maxY = window.innerHeight - btnHeight - 40;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            return { x: randomX, y: randomY };
+        }
+
+        function moveButton() {
+            const pos = getRandomPosition();
+            hayirBtn.style.position = 'fixed';
+            hayirBtn.style.left = pos.x + 'px';
+            hayirBtn.style.top = pos.y + 'px';
+        }
+
+        // Desktop için mouse hover
+        if (!isMobile) {
+            hayirBtn.addEventListener('mouseenter', moveButton);
+        }
+
+        // Mobil için touch/click
+        hayirBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            moveButton();
+        });
+
+        hayirBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            moveButton();
+        });
+
+        function celebrate() {
+            const celebration = document.getElementById('celebration');
+            celebration.classList.add('active');
+            
+            // Konfeti oluştur
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 30);
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+
+        // Pencere boyutu değiştiğinde mobil kontrolü
+        window.addEventListener('resize', () => {
+            isMobile = window.innerWidth <= 768;
+        });
+    </script>
+</body>
+</html>
